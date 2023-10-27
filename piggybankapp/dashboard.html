@@ -4,29 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piggy Bank Dashboard</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to external CSS for styling -->
+
+    <!-- jQuery and jQuery UI libraries for interactive elements -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+    <!-- Chart.js library for displaying charts and its annotation plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
 </head>
 <body>
     <header>
-        <h1>Piggy Bank</h1>
+        <h1>Piggy Bank</h1> <!-- Title of the page -->
         <div class="account-info">
-            Hi, <span class="name">Name</span> 
-            <button>Account</button>
+            Hi, <span class="name" id="userName">Name</span> <!-- Placeholder for user's name -->
+            <button>Account</button> <!-- Account button (functionality not defined here) -->
         </div>
     </header>   
     <main>
         <section class="account-section">
-            <h2>Spending Account:</h2>
-            <div class="amount">$67.80</div>
-        </section>
-        <section class="account-section">
-            <h2>Savings Account:</h2>
-            <div class="amount">$240.77</div>
+            <h2>Savings Account:</h2> <!-- Section title -->
+            <div class="amount" id="savingsAmount">$240.77</div> <!-- Display of current savings, default value shown -->
+            <div class="add-to-savings">
+                <input type="number" id="addAmount" placeholder="Enter amount"> <!-- Input for adding to savings -->
+                <button onclick="addToSavings()">Add to Savings</button> <!-- Button to add savings, triggers function -->
+                <input type="number" id="subtractAmount" placeholder="Enter amount"> <!-- Input for subtracting from savings -->
+                <button onclick="subtractFromSavings()">Subtract from Savings</button> <!-- Button to subtract savings, triggers function -->
+            </div>
         </section>
         <section class="goal-section">
-            <h2>Progress Towards Savings Goal</h2>
-            <!--add something showing progress -->
+            <h2>Progress Towards Savings Goal</h2> <!-- Section title -->
+            <div class="chart-container">
+                <canvas id="savingsChart"></canvas> <!-- Canvas element where the chart will be rendered -->
+            </div>
         </section>
     </main>
+    <script src="js/script.js"></script> <!-- Link to external JavaScript file -->
 </body>
 </html>

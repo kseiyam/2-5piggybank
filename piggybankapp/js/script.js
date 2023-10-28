@@ -8,13 +8,13 @@ var remaining = Math.max(savingsGoal - currentSavings, 0); // Calculate remainin
 function addToSavings() {
     var addAmount = parseFloat(document.getElementById("addAmount").value);
 
-    // Check if the input amount is a valid number and greater than 0
     if (!isNaN(addAmount) && addAmount > 0) {
         currentSavings += addAmount;
         document.getElementById("savingsAmount").textContent = '$' + currentSavings.toFixed(2);
-        updateYAxisMax(currentSavings); // Update y-axis max if needed
-        updateChart(currentSavings); // Update chart with new savings
-        updateGoalLabel(); // Update the goal label
+        updateYAxisMax(currentSavings);
+        updateChart(currentSavings);
+        updateGoalLabel();
+        addToHistory(addAmount, `Added $${addAmount.toFixed(2)}`); // Add this line to update history
     } else {
         alert("Please enter a valid amount");
     }
@@ -26,15 +26,14 @@ function addToSavings() {
 function subtractFromSavings() {
     var subtractAmount = parseFloat(document.getElementById("subtractAmount").value);
 
-    // Check if the input amount is a valid number and greater than 0
     if (!isNaN(subtractAmount) && subtractAmount > 0) {
-        // Ensure subtraction amount does not exceed current savings
         if (subtractAmount <= currentSavings) {
             currentSavings -= subtractAmount;
             document.getElementById("savingsAmount").textContent = '$' + currentSavings.toFixed(2);
-            updateYAxisMax(currentSavings); // Update y-axis max if needed
-            updateChart(currentSavings); // Update chart with new savings
-            updateGoalLabel(); // Update the goal label
+            updateYAxisMax(currentSavings);
+            updateChart(currentSavings);
+            updateGoalLabel();
+            addToHistory(-subtractAmount, `Subtracted $${subtractAmount.toFixed(2)}`); // Add this line to update history
         } else {
             alert("Cannot subtract more than the current savings");
         }
@@ -128,3 +127,29 @@ function updateYAxisMax(newAmount) {
 window.addEventListener('resize', function() {
     savingsChart.resize();
 });
+
+function addToHistory(amount, description) {
+    var historyBody = document.getElementById("historyBody");
+    var newRow = historyBody.insertRow();
+    var dateCell = newRow.insertCell(0);
+    var amountCell = newRow.insertCell(1);
+    var descriptionCell = newRow.insertCell(2);
+    var currentSavingsCell = newRow.insertCell(3);
+    
+    var today = new Date();
+    var formattedDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+    dateCell.innerText = formattedDate;
+    amountCell.innerText = '$' + Math.abs(amount).toFixed(2); // Use Math.abs() to display positive amount
+    currentSavingsCell.innerText = '$' + currentSavings.toFixed(2);
+    descriptionCell.innerText = description;
+
+    // Apply green color for positive amounts, red for negative amounts
+    if (amount >= 0) {
+        amountCell.innerText = '+$' + amount.toFixed(2);
+        amountCell.classList.add('amount-green');
+    } else {
+        amountCell.innerText = '-$' + Math.abs(amount).toFixed(2);;
+        amountCell.classList.add('amount-red');
+    }
+}

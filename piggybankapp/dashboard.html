@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
-    <!-- Chart.js library for displaying charts and its annotation plugin -->
+    <!-- Chart.js library for displaying charts-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
 </head>
@@ -20,7 +20,7 @@
         <h1>Piggy Bank</h1> <!-- Title of the page -->
         <div class="account-info">
             Hi, <span class="name" id="userName">Name</span> <!-- Placeholder for user's name -->
-            <button>Account</button> <!-- Account button (functionality not defined here) -->
+            <button>Account</button> <!-- Account button (no functionality yet)-->
         </div>
     </header>   
     <main>
@@ -34,12 +34,35 @@
                 <button onclick="subtractFromSavings()">Subtract from Savings</button> <!-- Button to subtract savings, triggers function -->
             </div>
         </section>
-        <section class="goal-section">
-            <h2>Progress Towards Savings Goal</h2> <!-- Section title -->
-            <div class="chart-container">
-                <canvas id="savingsChart"></canvas> <!-- Canvas element where the chart will be rendered -->
-            </div>
-        </section>
+        <div class="goal-history-container">
+            <section class="goal-section">
+                <h2>Progress Towards Savings Goal</h2>
+                <div class="chart-container">
+                    <canvas id="savingsChart"></canvas>
+                </div>
+            </section>
+        
+            <!-- New History Section -->
+            <section class="history-section">
+                <h2>History</h2>
+                <div class="history-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th class="description-column">Description</th>
+                                <th>Current Savings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody">
+                            <!-- Rows with data will go here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        
     </main>
     <script src="js/script.js"></script> <!-- Link to external JavaScript file -->
 </body>

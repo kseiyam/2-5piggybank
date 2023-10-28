@@ -51,12 +51,19 @@ main {
     border-radius: 10px;
 }
 
-.goal-section {
+.goal-section, .history-section {
+    width: 46.5%; /* Adjust width as needed */
+    /* Add any additional styling as needed */
     background-color: #FFDDDD;
     max-width:700px;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
+}
+
+.goal-history-container {
+    display: flex; /* Use flexbox to align items side by side */
+    justify-content: space-between; /* Spacing between the two sections */
 }
 
 h2 {
@@ -77,8 +84,30 @@ h2 {
     background-color: white;
 }
 
+.history-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
+.history-section th, .history-section td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
 
+.description-column {
+    width: 50%; /* Adjust this value as needed */
+}
 
+/* Optional styling for table headers */
+.history-section th {
+    background-color: #f2f2f2;
+}
 
+.amount-green {
+    color: green;
+}
 
+.amount-red {
+    color: red;
+}

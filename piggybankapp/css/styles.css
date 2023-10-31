@@ -36,6 +36,24 @@ button {
     transition: background-color 0.3s;
 }
 
+.add-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+}
+
+.add-button:hover {
+    background-color: #218838;
+}
+
+.subtract-button {
+    background-color: #dc3545; /* Red color */
+    color: white;
+}
+
+.subtract-button:hover {
+    background-color: #c82333;
+}
+
 button:hover {
     background-color: #FF8D8D;
 }
@@ -51,19 +69,22 @@ main {
     border-radius: 10px;
 }
 
+.goal-history-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px; /* Adjust this value based on your preference */
+    margin: 0 auto; /* Centers the container */
+    gap: 20px; /* Consistent gap between the two sections */
+}
+
 .goal-section, .history-section {
-    width: 46.5%; /* Adjust width as needed */
-    /* Add any additional styling as needed */
+    width: calc(50% - 10px); /* Adjusts width based on the gap */
+    /* Keep the rest of the existing styles */
     background-color: #FFDDDD;
-    max-width:700px;
+    max-width: 700px;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
-}
-
-.goal-history-container {
-    display: flex; /* Use flexbox to align items side by side */
-    justify-content: space-between; /* Spacing between the two sections */
 }
 
 h2 {

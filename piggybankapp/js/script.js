@@ -130,14 +130,14 @@ window.addEventListener('resize', function() {
 
 function addToHistory(amount, description) {
     var historyBody = document.getElementById("historyBody");
-    var newRow = historyBody.insertRow();
+    var newRow = historyBody.insertRow(0); // Insert at the beginning of the table
     var dateCell = newRow.insertCell(0);
     var amountCell = newRow.insertCell(1);
     var descriptionCell = newRow.insertCell(2);
     var currentSavingsCell = newRow.insertCell(3);
     
     var today = new Date();
-    var formattedDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var formattedDate = today.getFullYear() + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getDate().toString().padStart(2, '0');
 
     dateCell.innerText = formattedDate;
     amountCell.innerText = '$' + Math.abs(amount).toFixed(2); // Use Math.abs() to display positive amount
